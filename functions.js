@@ -48,7 +48,7 @@ function getRoles() {
  * Function to filter user by Roles
  */
 
-(async function filterByRoles(){
+async function filterByRoles(){
     const sectionsRole = require('./config/sections').sectionsRole; // Import sections Roles
 
     let roles = [],                 // Array of Roles
@@ -112,9 +112,20 @@ function getRoles() {
     /**
      * return the section's roles with them number of users
      */
+    let sectionStats = [];
+
     roles.map(role => {
         sectionsRole.map(sectionRole => {
-            if(role.id === sectionRole){console.log(`${role.name} : ${role.membersHaveThis} `)}
-        })
+            if(role.id === sectionRole){
+                sectionStats.push({ 
+                    name : role.name,
+                    members : role.membersHaveThis
+                });
+            };
+        });
     });
-})();
+
+    return sectionStats
+};
+
+module.exports = filterByRoles;
