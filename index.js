@@ -7,7 +7,7 @@ const   axios = require('axios'),
         header = {
             Authorization: `Bot ${botToken}`
         },
-        baseUrl = process.env.API_URL, // API URL from config.env
+        baseUrl = "https://discordapp.com/api", // API URL from config.env
         guildID = process.env.GUILD_ID; // Guild ID from config.env
 
 /**
@@ -127,5 +127,10 @@ async function filterByRoles(){
 
     return sectionStats
 };
+
+const create = require('./config/createConfig.js');
+
+//create.newConfig('token','413834140505604127').then(res => console.log(res));
+//create.checkConfig('token').then((res, req)=> console.log(res.status));
 
 module.exports = filterByRoles;
